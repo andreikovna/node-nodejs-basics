@@ -19,7 +19,7 @@ export const copy = async () => {
       }
       fs.readdir(source, { withFileTypes: true }, (err, files) => {
         if (err) {
-            throw new Error("FS operation failed");
+          throw new Error("FS operation failed");
         } else {
           files.forEach((file) => {
             const fileName = file.name.toString();
