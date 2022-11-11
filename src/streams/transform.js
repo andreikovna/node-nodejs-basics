@@ -7,7 +7,7 @@ import { Transform } from "stream";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export const transform = async () => {
+const transform = async () => {
   const { stdin, stdout } = process;
 
   console.log('Type smth:');
@@ -23,3 +23,5 @@ export const transform = async () => {
 
   stdin.pipe(reversedTransform()).pipe(stdout);
 };
+
+await transform();

@@ -10,8 +10,10 @@ const __dirname = dirname(__filename);
 const { stdout } = process;
 const fileToRead = path.join(__dirname, "files", "fileToCalculateHashFor.txt");
 
-export const calculateHash = async () => {
+const calculateHash = async () => {
   const fileResult = await fs.readFile(fileToRead, "utf8");
   const result = createHash("sha256").update(fileResult).digest("hex");
   stdout.write(result);
 };
+
+await calculateHash();

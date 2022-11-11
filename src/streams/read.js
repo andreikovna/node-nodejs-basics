@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 import * as fs from "fs";
 import * as path from "path";
 
-export const read = async () => {
+const read = async () => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
     
@@ -14,3 +14,5 @@ export const read = async () => {
     
     readStream.on ('data', chunk => stdout.write(chunk));
 };
+
+await read();

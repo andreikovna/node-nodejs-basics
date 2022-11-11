@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const newPath = path.join(__dirname, "files", "properFilename.md");
 const oldPath = path.join(__dirname, "files", "wrongFilename.txt");
 
-export const rename = async () => {
+const rename = async () => {
   fs.access(oldPath, (error) => {
     if (error) {
       throw new Error("FS operation failed");
@@ -28,3 +28,5 @@ export const rename = async () => {
     }
   });
 };
+
+await rename();

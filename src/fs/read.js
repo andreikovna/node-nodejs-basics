@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const { stdout } = process;
 const fileToRead = path.join(__dirname, "files", "fileToRead.txt");
 
-export const read = async () => {
+const read = async () => {
   fs.access(fileToRead, (err) => {
     if (err) {
       throw new Error("FS operation failed");
@@ -19,3 +19,5 @@ export const read = async () => {
     }
   });
 };
+
+await read();

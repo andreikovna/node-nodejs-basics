@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 const source = path.join(__dirname, "files");
 
-export const list = async () => {
+const list = async () => {
   fs.readdir(source, { withFileTypes: true }, (err, files) => {
     if (err) throw new Error("FS operation failed");
     else {
@@ -18,3 +18,5 @@ export const list = async () => {
     }
   });
 };
+
+await list();

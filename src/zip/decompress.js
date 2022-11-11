@@ -10,9 +10,11 @@ const __dirname = dirname(__filename);
 const fileToDecompress = path.join(__dirname, "files", "archive.gz");
 const decompressedPath = path.join(__dirname, "files", "fileToCompress.txt");
 
-export const decompress = async () => {
+const decompress = async () => {
   const readStream = fs.createReadStream(fileToDecompress);
   const writeStream = fs.createWriteStream(decompressedPath);
 
   readStream.pipe(zlib.createGunzip()).pipe(writeStream);
 };
+
+await decompress();

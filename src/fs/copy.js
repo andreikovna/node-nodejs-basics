@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 const destination = path.join(__dirname, "files-copy");
 const source = path.join(__dirname, "files");
 
-export const copy = async () => {
+const copy = async () => {
   function copyFiles() {
     fs.mkdir(destination, { recursive: true }, (err) => {
       if (err) {
@@ -52,3 +52,5 @@ export const copy = async () => {
     }
   });
 };
+
+copy();

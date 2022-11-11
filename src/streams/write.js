@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 import * as fs from "fs";
 import * as path from "path";
 
-export const write = async () => {
+const write = async () => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const { stdin, stdout } = process;
@@ -17,3 +17,5 @@ export const write = async () => {
     output.write(data);
   });
 };
+
+await write();

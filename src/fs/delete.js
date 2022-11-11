@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 const removePath = path.join(__dirname, "files", "fileToRemove.txt");
 
-export const remove = async () => {
+const remove = async () => {
   fs.access(removePath, (err) => {
     if (err) {
       throw new Error("FS operation failed");
@@ -21,3 +21,5 @@ export const remove = async () => {
     }
   });
 };
+
+await remove();
