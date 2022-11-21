@@ -1,10 +1,16 @@
 const parseArgs = () => {
-    const args = process.argv.slice(2);
-    args.forEach((argument, index) => {
-        if (index === 0) {
-            console.log(`propName is ${argument}`);
-        } else console.log(`prop${index+1}Name is ${argument}`);
-    })
+  const args = process.argv.slice(2);
+  console.log(
+    args
+      .reduce((acc, argument, index) => {
+        const result =
+          index % 2 === 0
+            ? `${argument.replace("--", "")} is `
+            : `${argument}, `;
+        return acc + result;
+      }, "")
+      .slice(0, -2)
+  );
 };
 
 parseArgs();
