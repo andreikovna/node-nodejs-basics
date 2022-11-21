@@ -17,9 +17,9 @@ const __dirname = dirname(__filename);
 export let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = a;
+    unknownObject = { ...a };
 } else {
-    unknownObject = b;
+    unknownObject = { ...b };
 }
 
 console.log(`Release ${release()}`);
