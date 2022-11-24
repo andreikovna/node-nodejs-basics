@@ -6,16 +6,14 @@ import * as path from "path";
 const write = async () => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  const { stdin, stdout } = process;
+  const { stdin } = process;
 
-  const resultText = path.join(__dirname, "files", "fileToWrite.txt");
-  const output = fs.createWriteStream(resultText);
+  const fileToWrite = path.join(__dirname, "files", "fileToWrite.txt");
+  const writeStream = fs.createWriteStream(fileToWrite);
 
   console.log("\nplease, write smth here:");
-  
-  stdin.on("data", (data) => {
-    output.write(data);
-  });
+
+  stdin.pipe(writeStream);
 };
 
 await write();
