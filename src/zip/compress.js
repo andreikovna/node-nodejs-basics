@@ -13,8 +13,11 @@ const archive = path.join(__dirname, 'files', 'archive.gz');
 const compress = async () => {
   const readStream = fs.createReadStream(fileToCompress, 'utf-8');
   const writeStream = fs.createWriteStream(archive);
+  const archivator = zlib.createGzip();
 
-  readStream.pipe(zlib.createGzip()).pipe(writeStream);
+  readStream.pipe(archivator).pipe(writeStream).on('finish', () => {
+    fs.rm(fileToCompress, () => console.log('Done!'));
+  });
 };
 
 await compress();

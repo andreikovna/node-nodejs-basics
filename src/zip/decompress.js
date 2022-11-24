@@ -14,7 +14,9 @@ const decompress = async () => {
   const readStream = fs.createReadStream(fileToDecompress);
   const writeStream = fs.createWriteStream(decompressedPath);
 
-  readStream.pipe(zlib.createGunzip()).pipe(writeStream);
+  readStream.pipe(zlib.createGunzip()).pipe(writeStream).on('finish', () => {
+    fs.rm(fileToDecompress, () => console.log('Restored!'));
+  });;
 };
 
 await decompress();
